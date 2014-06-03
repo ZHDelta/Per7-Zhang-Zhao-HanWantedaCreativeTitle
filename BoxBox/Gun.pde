@@ -3,3 +3,4 @@ public class Gun {
   float damage;
   float rate;
 }
+
