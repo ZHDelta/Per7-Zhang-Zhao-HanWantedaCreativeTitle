@@ -1,50 +1,25 @@
-public class Player extends Character {
-  PVector mouse, location, dir;
+class Player extends Character {
   
   //float kills;
   
-  public Player(){
-    location = new PVector(300,300);
+  Player() {
+    //placeholder
+    speed = 2;
     health = 100;
+    moveLeft = moveRight = moveUp = moveDown = false;
+    xPos = yPos = 300;
   }
   
   
   void show(){
-    
+      if (moveLeft) xPos -= speed;
+      if (moveRight) xPos += speed;
+      if (moveUp) yPos -= speed;
+      if (moveDown) yPos += speed;
+      ellipse(xPos, yPos, 30, 30);
   }
   
-  void keyPressed(){
-      if (key == CODED){
-          if (keyCode == UP){
-            moveUp = true;  
-          }
-          if (keyCode == DOWN){
-            moveRight = true;
-          }
-          if (keyCode == LEFT){
-            moveLeft = true;
-          }
-          if (keyCode == RIGHT){
-            moveRight = true;
-          }
-      }
-  }
   
-  void keyReleased(){
-      if (key == CODED){
-        if (keyCode == LEFT){
-          moveLeft = false;
-      }
-        else if (keyCode == RIGHT){
-          moveRight = false;
-        }
-        else if (keyCode = UP){
-          moveUp = false;
-        }
-        else if(keyCode == DOWN){
-            moveDown = false;
-        }
-      }
-  }
+}
    
     
