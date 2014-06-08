@@ -17,15 +17,24 @@ class Player extends Character {
   }
   
    void update(){
-      mouse = new PVector(mouseX, mouseY);
-      dir = PVector.sub(mouse,location);
+      mouse = new PVector(xPos-mouseX, yPos-mouseY);
+      //dir = PVector.sub(mouse,location);
+      dir = mouse;
   }
   
   void show(){
-      rotate(atan(dir.y/dir.x));
-      move();
-      image(img, xPos, yPos);
 
+      pushMatrix();
+      noStroke();
+      translate(xPos, yPos);
+      update();
+      rotate(dir.heading());
+      imageMode(CENTER);
+      move();
+      image(img, 0, 0);
+      translate(-xPos, -yPos);
+      popMatrix();
+  
   }
   
   void move(){

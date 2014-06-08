@@ -1,10 +1,11 @@
 class Zombie extends Character {
 
   Zombie() {
-    //speed = something
-    // health = something
+    speed = 1;
+    health = 100;
+    xPos = 300;
+    yPos = 0;
     
-    // spawn it somewhere
   }
 
   void show() {

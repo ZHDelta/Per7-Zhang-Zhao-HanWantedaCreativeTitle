@@ -8,7 +8,6 @@ void setup(){
 void draw(){
   background(300,250,300);
   bob.show();
-  bob.update();
 }
 
 void keyPressed(){
@@ -25,9 +24,9 @@ void keyPressed(){
           if (keyCode == RIGHT){
             moveRight = true;
           }
-          /*if (key == ' '){
-            firing = true;
-      }*/
+       //   if (key == ' '){
+        //    firing = true;
+      //}
       }
 }
   
@@ -45,9 +44,9 @@ void keyPressed(){
         else if(keyCode == DOWN){
           moveDown = false;
         }
-       /* else if(key == " "){
-          firing = false;
-        }*/
+        //else if(key == " "){
+         // firing = false;
+       // }
       }
   }
   
