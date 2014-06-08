@@ -9,6 +9,7 @@ void setup(){
 void draw(){
   background(300,250,300);
   bob.show();
+  bob.update();
 }
 
 void keyPressed(){
