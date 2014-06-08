@@ -1,9 +1,9 @@
-
 Player bob;
-boolean moveLeft, moveRight, moveUp, moveDown;
+boolean moveLeft, moveRight, moveUp, moveDown, firing;
 void setup(){
    size(600,600);
    bob = new Player();
+
 }
 
 void draw(){
@@ -25,8 +25,11 @@ void keyPressed(){
           if (keyCode == RIGHT){
             moveRight = true;
           }
+          /*if (key == ' '){
+            firing = true;
+      }*/
       }
-  }
+}
   
   void keyReleased(){
       if (key == CODED){
@@ -40,9 +43,12 @@ void keyPressed(){
           moveUp = false;
         }
         else if(keyCode == DOWN){
-            moveDown = false;
+          moveDown = false;
         }
+       /* else if(key == " "){
+          firing = false;
+        }*/
       }
   }
-
+  
 
