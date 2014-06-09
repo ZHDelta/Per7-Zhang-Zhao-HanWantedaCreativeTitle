@@ -41,6 +41,15 @@ class Player extends Character {
       if (moveRight) xPos += speed;
       if (moveUp) yPos -= speed;
       if (moveDown) yPos += speed;
+      if (xPos < 0){
+      xPos=0;
+    } else if (xPos > gridSize){
+     xPos=600; 
+    } else if (yPos < 0){
+      yPos=0;
+    } else if (yPos > gridSize){
+     yPos=600; 
+    }
   }
   
 }

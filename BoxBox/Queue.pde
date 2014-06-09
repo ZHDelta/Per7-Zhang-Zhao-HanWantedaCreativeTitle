@@ -1,3 +1,4 @@
+import java.util.Random;
 class Queue{
   
   Zombie[] que;
@@ -38,7 +39,14 @@ class Queue{
   void move(){
    for (int i=pos; i!=length; i++){
      if (i==1000) i=0;
-     que[i].move(bob.xPos, bob.yPos);
+     
+     boolean intersects = false;
+     for (int a=i+1; a!=length; a++){
+       if (a==1000) a=0;
+       if (Math.abs(que[i].xPos-que[a].xPos) < 20 && Math.abs(que[i].yPos-que[a].yPos) < 20) intersects = true;
+     }
+     Random a = new Random();
+     if (!intersects) que[i].move(bob.xPos, bob.yPos);
      que[i].show();
    } 
   }
