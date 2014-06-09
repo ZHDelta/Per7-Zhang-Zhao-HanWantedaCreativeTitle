@@ -79,4 +79,17 @@ class Queue{
     return pos!=length;
   }
   
+  boolean lookFor(int x, int y){
+    for (int i=pos; i!=length; i++){
+     if (i==1000) i=0;
+    if (Math.abs(que[i].xPos-x) < 20 && Math.abs(que[i].yPos-y) < 20) {
+      die(i);
+    return true;
+    }
+    }
+    return false;
+    
+    
+  }
+  
 }

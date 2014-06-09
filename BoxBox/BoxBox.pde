@@ -45,6 +45,10 @@ void draw(){
   //grid.move();
 }
 
+void mousePressed() {
+  zoms.lookFor(mouseX, mouseY);
+}
+
 void keyPressed(){
       if (key == CODED){
           if (keyCode == UP){
