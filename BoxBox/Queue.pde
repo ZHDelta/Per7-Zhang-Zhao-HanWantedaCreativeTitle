@@ -83,6 +83,8 @@ class Queue{
     for (int i=pos; i!=length; i++){
      if (i==1000) i=0;
     if (Math.abs(que[i].xPos-x) < 20 && Math.abs(que[i].yPos-y) < 20) {
+      stroke(0);
+      line(bob.xPos, bob.yPos, x, y);
       die(i);
     return true;
     }
