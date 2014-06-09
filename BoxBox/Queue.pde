@@ -35,8 +35,32 @@ class Queue{
     }
   }
   
+  void move(){
+   for (int i=pos; i!=length; i++){
+     if (i==1000) i=0;
+     que[i].move(bob.xPos, bob.yPos);
+     que[i].show();
+   } 
+  }
+  
+  void replace(int i, Zombie z){
+   // replace zombie at position i with zombie z
+   que[i]=z; 
+  }
+  
+
+  void die(int i){
+    // use this when you know the zombie at position i dies
+    que[i]=get();
+  }
+  
   Zombie get(){
+    // once you get it, you loose the zombie
     return que[pos++]; 
+  }
+  
+  Zombie get (int i){
+   return que[i]; 
   }
   
   boolean hasMoar(){

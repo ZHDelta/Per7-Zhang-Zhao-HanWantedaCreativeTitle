@@ -1,19 +1,18 @@
 class Zombie extends Character {
- int rot;
-  Zombie() {
+  int rot;
+  Zombie(int x, int y) {
     speed = 1;
     health = 100;
-    xPos = 200;
-    yPos = 200;
+    xPos = x;
+    yPos = y;
     img = loadImage("Zombie.png");
     rot=0;
   }
 
   void show() {
+    pushMatrix();
     translate(xPos, yPos); 
-    if (hdir==0) {
-      xPos -= speed;
-    } else if (hdir==45) {
+    if (hdir==45) {
       rotate(radians(315)); 
     } else if (hdir==90) {
       rotate(radians(270)); 
@@ -29,6 +28,7 @@ class Zombie extends Character {
       rotate(radians(225)); 
     }
     image(img,0,0); 
+    popMatrix();
   }
 
   void move(int x, int y) {
@@ -38,7 +38,6 @@ class Zombie extends Character {
     tempAngle = Math.atan2(xPos-x, yPos-y);
     tempAngle = tempAngle*57.2957795-90;
     tempAngle2 = hdir;
-    
     if (rot>15) {
         hdir = (int)tempAngle/45*45;
     }
@@ -69,31 +68,43 @@ class Zombie extends Character {
     }
     //needs to check for collision outside of function
     //because it doesn't know who the player is
+    
+    if (xPos < 0){
+      xPos=0;
+    } else if (xPos > gridSize){
+     xPos=600; 
+    } else if (yPos < 0){
+      yPos=0;
+    } else if (yPos > gridSize){
+     yPos=600; 
+    }
+    
+    
   }
-  
+  /*
   void setLimits(int x, int y, int scale){
     if (hdir==0) {
+      yPos = x*scale;
+    } else if (hdir==-45) {
+      xPos = x*scale;
       yPos = y*scale;
-    } else if (hdir==45) {
+    } else if (hdir==-90) {
+      xPos = y*scale;
+    } else if (hdir==-135) {
       xPos = (x+1)*scale;
       yPos = y*scale;
+    } else if (hdir==-180) {
+      yPos = x*scale;
+    } else if (hdir==-225) {
+      xPos = (x+1)*scale;
+      yPos = (y+1)*scale;
     } else if (hdir==90) {
-      xPos = (x+1)*scale;
-    } else if (hdir==135) {
-      xPos = (x+1)*scale;
-      yPos = (y+1)*scale;
-    } else if (hdir==180) {
-      yPos = (y+1)*scale;
-    } else if (hdir==215) {
+      xPos = y*scale;
+    } else if (hdir==45) {
       xPos = x*scale;
       yPos = (y+1)*scale;
-    } else if (hdir==270) {
-      xPos = x*scale;
-    } else if (hdir==315) {
-      xPos = x*scale;
-      yPos = y*scale;
     }
   }
-  
+  */
 }
 
