@@ -103,6 +103,8 @@ class Queue{
     }
     }
     }
+    // test code
+    line(bob.xPos, bob.yPos, x + 100(x-bob.xPos), y + 100(y-bob.yPos));
     return false;
     
     
