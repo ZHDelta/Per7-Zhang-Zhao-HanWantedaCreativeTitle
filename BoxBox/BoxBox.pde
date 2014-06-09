@@ -78,6 +78,9 @@ void draw(){
   text("Restart?", 300, 475); 
   if(mousePress==true){
     int temphigh = kills;
+    if (temphigh>highscore){
+      temphigh = highscore;
+    }
     setup();
     highScore=temphigh;
   }
