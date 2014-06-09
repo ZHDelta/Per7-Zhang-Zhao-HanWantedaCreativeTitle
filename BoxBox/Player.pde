@@ -1,7 +1,6 @@
 class Player extends Character {
   
   //float kills;
-  
   Player() {
     //placeholder
     speed = 2;

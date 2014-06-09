@@ -1,13 +1,21 @@
 Player bob;
 boolean moveLeft, moveRight, moveUp, moveDown, firing;
+DynamicMap grid;
+Zombie bomb;
 void setup(){
    size(600,600);
    bob = new Player();
+   //grid = new DynamicMap(600, 600, 15);
+   //grid.add(0,0, new Zombie());
+   bomb = new Zombie();
 }
 
 void draw(){
   background(300,250,300);
   bob.show();
+  //grid.move();
+  bomb.move(bob.xPos, bob.yPos);
+  bomb.show();
 }
 
 void keyPressed(){
@@ -60,7 +68,7 @@ class DynamicMap {
   int scale; // how big characters are compared to map
   
   DynamicMap(int x, int y, int scale){
-    scale = 0;
+    this.scale=scale;
     // x and y values for maxDimensions
     map = new Character[x/scale][y/scale];
   }

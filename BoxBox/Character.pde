@@ -3,9 +3,8 @@ public class Character {
   int speed; //how quickly the character moves
   int hdir;
   PVector dir, location, mouse; //the direction the character is facing
-  int xPos, yPos;
   PImage img;
-  
+  int xPos, yPos;
   void show(){
   }
   
