@@ -54,7 +54,7 @@ class Queue{
          if (bob.isDead()) gameOver=true;
          }
        } else {
-        speed = 1;
+        que[i].speed = 1;
        }
      }
      Random a = new Random();
@@ -109,7 +109,6 @@ class Queue{
     }
     }
     // test code
-    line(bob.xPos, bob.yPos, x + 100(x-bob.xPos), y + 100(y-bob.yPos));
     return false;
     
     
