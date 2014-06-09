@@ -19,7 +19,7 @@ void setup(){
 }
 
 void draw(){
-  background(300,250,300);
+  background(0);
   bob.show();
   if (incZoms.hasMoar()){
    zoms.add(incZoms.get()); 
@@ -43,6 +43,8 @@ void draw(){
   }
   zoms.move();
   //grid.move();
+  textSize(100);
+  text(1, 200, 300); 
 }
 
 void mousePressed() {
