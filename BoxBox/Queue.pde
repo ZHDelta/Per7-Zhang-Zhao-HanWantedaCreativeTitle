@@ -44,12 +44,17 @@ class Queue{
      for (int a=i+1; a!=length; a++){
        if (a==1000) a=0;
        if (Math.abs(que[i].xPos-que[a].xPos) < 20 && Math.abs(que[i].yPos-que[a].yPos) < 20) intersects = true;
-       if (Math.abs(que[i].xPos-bob.xPos) < 30 && Math.abs(que[i].yPos-bob.yPos) < 30) {
+       if (Math.abs(que[i].xPos-bob.xPos) < 100 && Math.abs(que[i].yPos-bob.yPos) < 100) {
+       que[i].speed = 2;
+        if (Math.abs(que[i].xPos-bob.xPos) < 30 && Math.abs(que[i].yPos-bob.yPos) < 30) {
          if (bob.dmgTick == 0) {
            bob.loseHealth(zombieDamage);
            bob.dmgTick = playerInv;
          }
          if (bob.isDead()) gameOver=true;
+         }
+       } else {
+        speed = 1;
        }
      }
      Random a = new Random();
