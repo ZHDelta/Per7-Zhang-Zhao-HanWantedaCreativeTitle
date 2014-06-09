@@ -6,13 +6,19 @@ Queue zoms, incZoms;
 int wave;
 int kills;
 Gun lasersOfDoom;
+boolean gameOver;
+int highScore;
+boolean mousePress;
 
 void setup(){
    gridSize = 600;
    size(gridSize,gridSize);
    charSize = 40;
    kills = 0;
-   lasersOfDoom = new Gun(50);
+   wave = 0;
+   highScore=-1;
+   gameOver=false;
+   lasersOfDoom = new Gun(gunDamage);
    bob = new Player();
    zoms = new Queue(); // zombies on board
    incZoms = new Queue(); // zombies spawning
@@ -24,10 +30,20 @@ void setup(){
 
 void draw(){
   background(0);
-  lasersOfDoom.tick();
+  fill(225);
   textSize(200);
   textAlign(CENTER, CENTER);
   text(kills, 300, 300); 
+  textSize(20);
+  textAlign(LEFT);
+  text("Wave: " + wave, 30, 570); 
+  if (highScore != -1){
+    textSize(20);
+    textAlign(RIGHT);
+    text("High Score: " + highScore, 570, 570); 
+  }
+  if (!gameOver){
+  lasersOfDoom.tick();
   bob.show();
   if (incZoms.hasMoar()){
    zoms.add(incZoms.get()); 
@@ -47,15 +63,37 @@ void draw(){
       }
       numZoms--;
     }
+    bob.waveOver();
     wave++;
   }
   zoms.move();
+  } else {
+  textSize(75);
+  fill(225);
+  textAlign(CENTER, CENTER);
+  text("Game Over!!!", 300, 100); 
+  textSize(30);
+  text("Score:", 300, 220); 
+  textSize(30);
+  text("Restart?", 300, 475); 
+  if(mousePress==true){
+    int temphigh = kills;
+    setup();
+    highScore=temphigh;
+  }
+  
+  }
   //grid.move();
   
 }
 
 void mousePressed() {
+  mousePress = true;
   zoms.lookFor(mouseX, mouseY);
+}
+
+void mouseReleased(){
+  mousePress=false;
 }
 
 void keyPressed(){

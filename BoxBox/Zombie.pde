@@ -1,8 +1,8 @@
 class Zombie extends Character {
   int rot;
   Zombie(int x, int y) {
-    speed = 1;
-    health = 100;
+    speed = zombieSpeed;
+    health = zombieHealth;
     xPos = x;
     yPos = y;
     img = loadImage("Zombie.png");

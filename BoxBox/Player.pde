@@ -1,10 +1,11 @@
 class Player extends Character {
   
+  int dmgTick;
   //float kills;
   Player() {
     //placeholder
-    speed = 2;
-    health = 100;
+    speed = playerSpeed;
+    health =playerHealth;
     moveLeft = moveRight = moveUp = moveDown = firing = false;
     xPos = yPos = 300;
     img = loadImage("Pixel2.png");
@@ -22,7 +23,7 @@ class Player extends Character {
   }
   
   void show(){
-
+      if (dmgTick>0) dmgTick--;
       pushMatrix();
       noStroke();
       translate(xPos, yPos);
@@ -33,7 +34,8 @@ class Player extends Character {
       image(img, 0, 0);
       translate(-xPos, -yPos);
       popMatrix();
-  
+      textSize(12);
+      text(health, xPos, yPos-20); 
   }
   
   void move(){
@@ -51,7 +53,18 @@ class Player extends Character {
      yPos=600; 
     }
   }
+  void waveOver(){
+   health+=5;
+   if (health>100) health=100;
+  }
   
+  void loseHealth(int health){
+   this.health-=health; 
+  }
+  
+  boolean isDead(){
+    return health<=0;
+  }
 }
    
     

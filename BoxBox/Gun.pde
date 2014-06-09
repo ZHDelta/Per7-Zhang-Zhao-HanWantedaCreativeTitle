@@ -10,7 +10,7 @@ class Gun {
   }
   
   void cd(){
-    cooldown=15;
+    cooldown=gunCooldown;
   }
   
   boolean offCd(){
