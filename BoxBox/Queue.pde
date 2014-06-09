@@ -80,13 +80,20 @@ class Queue{
   }
   
   boolean lookFor(int x, int y){
+    if (lasersOfDoom.offCd()){
     for (int i=pos; i!=length; i++){
      if (i==1000) i=0;
     if (Math.abs(que[i].xPos-x) < 20 && Math.abs(que[i].yPos-y) < 20) {
       stroke(225, 0, 0);
       line(bob.xPos, bob.yPos, x, y);
+      que[i].takeDmg(lasersOfDoom.dmg());
+      if (que[i].dead()){
       die(i);
+      kills++;
+      }
+      lasersOfDoom.cd();
     return true;
+    }
     }
     }
     return false;

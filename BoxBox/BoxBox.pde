@@ -4,11 +4,15 @@ int gridSize, charSize;
 //DynamicMap grid;
 Queue zoms, incZoms;
 int wave;
+int kills;
+Gun lasersOfDoom;
 
 void setup(){
    gridSize = 600;
    size(gridSize,gridSize);
    charSize = 40;
+   kills = 0;
+   lasersOfDoom = new Gun(50);
    bob = new Player();
    zoms = new Queue(); // zombies on board
    incZoms = new Queue(); // zombies spawning
@@ -20,6 +24,10 @@ void setup(){
 
 void draw(){
   background(0);
+  lasersOfDoom.tick();
+  textSize(200);
+  textAlign(CENTER, CENTER);
+  text(kills, 300, 300); 
   bob.show();
   if (incZoms.hasMoar()){
    zoms.add(incZoms.get()); 
@@ -43,8 +51,7 @@ void draw(){
   }
   zoms.move();
   //grid.move();
-  textSize(100);
-  text(1, 200, 300); 
+  
 }
 
 void mousePressed() {

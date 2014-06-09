@@ -81,6 +81,15 @@ class Zombie extends Character {
     
     
   }
+  
+  void takeDmg(int x){
+    health-=x;
+  }
+  
+  boolean dead(){
+    if (health<=0) return true;
+    return false;
+  }
   /*
   void setLimits(int x, int y, int scale){
     if (hdir==0) {
